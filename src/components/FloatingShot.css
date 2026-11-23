@@ -1,0 +1,110 @@
+.sh {
+  position: relative;
+  display: grid;
+  place-items: center;
+  perspective: 1800px;
+  perspective-origin: 50% 46%;
+  isolation: isolate;
+}
+
+/* a flat, colourless pool so the mockup has something to sit on */
+.sh__halo {
+  position: absolute;
+  inset: 8% 2% 4%;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(52% 46% at 50% 52%, rgba(18, 26, 43, 0.09), transparent 72%);
+  filter: blur(46px);
+}
+.sh--dark .sh__halo {
+  background: radial-gradient(54% 48% at 50% 52%, rgba(214, 228, 248, 0.1), transparent 74%);
+}
+
+.sh__body {
+  position: relative;
+  z-index: 2;
+  transform-style: preserve-3d;
+  transform:
+    translate3d(var(--px, 0px), var(--py, 0px), 0)
+    rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg));
+  will-change: transform;
+}
+
+.sh__drift {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: sh-drift 18s ease-in-out infinite;
+}
+
+.sh__img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  filter:
+    drop-shadow(0 26px 40px rgba(18, 26, 43, 0.2))
+    drop-shadow(0 4px 10px rgba(18, 26, 43, 0.12));
+}
+.sh--dark .sh__img {
+  filter:
+    drop-shadow(0 30px 46px rgba(2, 8, 20, 0.5))
+    drop-shadow(0 4px 11px rgba(2, 8, 20, 0.38));
+}
+
+.sh__sheen {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent 34%,
+    rgba(255, 255, 255, 0.2) var(--sheen, 50%),
+    transparent 68%
+  );
+  -webkit-mask-image: var(--mask);
+  mask-image: var(--mask);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  mix-blend-mode: overlay;
+  opacity: 0.7;
+}
+
+.sh__ground {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: 4%;
+  width: 62%;
+  height: 5%;
+  translate: -50% 0;
+  border-radius: 50%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(18, 26, 43, 0.2), transparent 70%);
+  filter: blur(18px);
+  scale: var(--shadow-scale, 1);
+  animation: sh-ground 18s ease-in-out infinite;
+}
+.sh--dark .sh__ground {
+  background: radial-gradient(50% 50% at 50% 50%, rgba(2, 8, 20, 0.5), transparent 70%);
+}
+
+@keyframes sh-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) rotateZ(0deg) rotateY(0deg); }
+  25%      { transform: translate3d(3px, -10px, 16px) rotateZ(-0.45deg) rotateY(1.9deg); }
+  50%      { transform: translate3d(0, -15px, 6px) rotateZ(0.22deg) rotateY(0deg); }
+  75%      { transform: translate3d(-3px, -8px, 16px) rotateZ(0.5deg) rotateY(-1.9deg); }
+}
+
+@keyframes sh-ground {
+  0%, 100% { opacity: 0.85; width: 62%; }
+  50%      { opacity: 0.55; width: 52%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sh__drift, .sh__ground { animation: none; }
+  .sh__sheen { display: none; }
+}

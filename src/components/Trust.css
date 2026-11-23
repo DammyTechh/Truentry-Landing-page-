@@ -1,0 +1,8 @@
+.trust__table .register { max-width: 92ch; }
+.trust__table .register tbody td:first-child { width: 11rem; }
+.trust__table .register tbody tr { transition: background 0.3s var(--ease-soft); }
+.trust__table .register tbody tr:hover { background: var(--paper-tint); }
+
+@media (max-width: 720px) {
+  .trust__table .register tbody td:first-child { width: auto; }
+}

@@ -1,0 +1,24 @@
+.terms__table .register tbody td:first-child { width: 17rem; white-space: normal; }
+.terms__table .register tbody tr { transition: background 0.3s var(--ease-soft); }
+.terms__table .register tbody tr:hover { background: var(--paper-tint); }
+
+.terms__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.4rem;
+  padding: 0.7rem 1.2rem;
+  border: 1px solid var(--line-firm);
+  border-radius: var(--radius);
+  background: none;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+.terms__more:hover { background: var(--blue-800); border-color: var(--blue-800); color: #fff; }
+
+@media (max-width: 720px) {
+  .terms__table .register tbody td:first-child { width: auto; }
+}

@@ -1,0 +1,58 @@
+/* The one dark surface on the page, set as an inset extract rather than a
+   full-bleed band, so the sheet stays continuous. */
+.inset {
+  padding: clamp(1.6rem, 3vw, 2.6rem);
+  border-radius: var(--radius-xl);
+  background: var(--ink-900);
+  color: var(--on-dark-soft);
+}
+
+.keeps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.keeps li {
+  padding: clamp(0.4rem, 1vw, 0.8rem) clamp(1rem, 2.2vw, 1.8rem);
+  border-left: 1px solid var(--line-dark);
+}
+.keeps li:first-child { border-left: 0; padding-left: 0; }
+.keeps li:last-child { padding-right: 0; }
+
+.keeps__icon {
+  display: grid;
+  place-items: center;
+  width: 44px; height: 44px;
+  margin-bottom: 1rem;
+  border-radius: var(--radius-lg);
+  background: rgba(238, 242, 249, 0.08);
+  color: var(--blue-300);
+}
+.keeps h3 { font-size: var(--fs-h3); color: var(--on-dark); margin-bottom: 0.45rem; }
+.keeps p { font-size: var(--fs-small); line-height: 1.6; color: var(--on-dark-mute); }
+
+.caveat {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  margin-top: clamp(1.6rem, 3vw, 2.4rem);
+}
+.caveat__icon {
+  display: grid;
+  place-items: center;
+  width: 40px; height: 40px;
+  border: var(--rule);
+  border-radius: var(--radius-lg);
+  color: var(--blue-700);
+}
+.caveat .annot { max-width: 76ch; }
+
+@media (max-width: 860px) {
+  .keeps { grid-template-columns: 1fr; }
+  .keeps li { border-left: 0; padding: 1.2rem 0; border-top: 1px solid var(--line-dark); }
+  .keeps li:first-child { border-top: 0; padding-top: 0; }
+}

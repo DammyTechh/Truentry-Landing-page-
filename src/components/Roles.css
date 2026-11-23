@@ -1,0 +1,106 @@
+/* ---------- file-folder tabs ---------- */
+.switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: -1px;
+  position: relative;
+  z-index: 2;
+}
+.switch__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.72rem clamp(0.8rem, 1.6vw, 1.15rem);
+  border: var(--rule);
+  border-bottom-color: transparent;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--paper-tint);
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--ink-mute);
+  cursor: pointer;
+  transition: background 0.3s var(--ease-soft), color 0.3s, box-shadow 0.3s;
+}
+.switch__tab:hover { background: var(--blue-50); color: var(--ink); }
+.switch__tab.is-on {
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: inset 0 3px 0 var(--blue-600);
+}
+.switch__icon { display: grid; place-items: center; color: var(--blue-700); }
+.switch__tab.is-on .switch__icon { color: var(--blue-600); }
+
+/* ---------- the open folder ---------- */
+.desk {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(1.6rem, 3.5vw, 3.2rem);
+  align-items: start;
+  padding: clamp(1.4rem, 3vw, 2.4rem);
+  border: var(--rule);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) var(--radius-lg);
+  background: var(--paper);
+}
+
+.desk__line {
+  font-size: var(--fs-h3);
+  max-width: 24ch;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.desk__does { list-style: none; margin: 0; padding: 0; }
+.desk__does li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.8rem;
+  padding: 0.7rem 0;
+  border-top: var(--rule);
+  font-size: var(--fs-small);
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.desk__does li:last-child { border-bottom: var(--rule); }
+.desk__n {
+  font-size: var(--fs-label);
+  font-weight: 700;
+  color: var(--blue-600);
+  padding-top: 0.2rem;
+  width: 1ch;
+}
+
+.desk__stage { display: grid; align-self: center; }
+.desk__stage .figure__frame { border: 0; border-radius: var(--radius); }
+.desk__stage .sh { width: 100%; }
+
+@media (max-width: 1000px) {
+  .desk { grid-template-columns: 1fr; }
+  .desk__stage { order: -1; }
+}
+/* Narrow screens cannot hold four folder tabs on one row, so the tabs
+   become a plain two-up chooser and the panel stops pretending to be a
+   folder. */
+@media (max-width: 620px) {
+  .switch {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem;
+    margin-bottom: 0.7rem;
+  }
+  .switch__tab {
+    justify-content: flex-start;
+    padding: 0.68rem 0.8rem;
+    font-size: 0.97rem;
+    border-bottom-color: var(--line);
+    border-radius: var(--radius);
+  }
+  .switch__tab.is-on {
+    background: var(--blue-800);
+    border-color: var(--blue-800);
+    color: #fff;
+    box-shadow: none;
+  }
+  .switch__tab.is-on .switch__icon { color: #fff; }
+  .desk { border-radius: var(--radius-lg); }
+}
