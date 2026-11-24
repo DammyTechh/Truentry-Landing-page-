@@ -87,3 +87,11 @@ Green, amber and red appear only as application status (`.pill--ok`,
 - Everything respects `prefers-reduced-motion`.
 - Partner logos sit on a plate and keep their own brand colours.
 - The stubbed JAMB integration is stated once, plainly, in Records.
+
+## The team section
+
+`src/components/Team.jsx` sits just before the closing block and is set as
+clause 6 of the document, with the photograph as Fig. 6. The photograph is `src/assets/team.webp`, 1700px wide, cropped with
+`aspect-ratio` plus `object-position` so all three faces survive the crop at
+every width. No names are printed yet; add them to the component when you
+have them.

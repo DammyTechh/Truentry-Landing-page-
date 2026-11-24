@@ -6,6 +6,7 @@ import Decisions from './components/Decisions';
 import Records from './components/Records';
 import Trust from './components/Trust';
 import Terms from './components/Terms';
+import Team from './components/Team';
 import Closing from './components/Closing';
 import Footer from './components/Footer';
 import useReveal from './hooks/useReveal';
@@ -16,6 +17,7 @@ const CONTENTS = [
   { id: 'records', label: 'What is kept' },
   { id: 'trust', label: 'Security and compliance' },
   { id: 'terms', label: 'Terms used' },
+  { id: 'team', label: 'Who built it' },
   { id: 'closing', label: 'Where it stands' },
 ];
 
@@ -37,6 +39,7 @@ export default function App() {
               <Records />
               <Trust />
               <Terms />
+              <Team />
               <Closing />
             </div>
           </div>

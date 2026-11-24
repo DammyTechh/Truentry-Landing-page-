@@ -10,7 +10,7 @@ export default function Closing() {
   return (
     <section className="clause closing" id="closing">
       <header className="clause__head" data-reveal>
-        <span className="clause__num">6</span>
+        <span className="clause__num">7</span>
         <div>
           <h2 className="clause__title">An admission you can check.</h2>
         </div>
